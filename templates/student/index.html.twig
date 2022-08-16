@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of students!{% endblock %}
+
+{% block body %}
+<div class="container col-md-8 text-center mt-3">
+   <div class="row">
+      <div class="col-6">
+         <table class="table table-bordered">
+            <tr>
+               <th colspan="2" class="bg-light">
+                  <h2 class="text-danger">{{ student.name }} </h2>
+               </th>
+            </tr>
+            <tr class="h4">
+               <th>Phone number</th>
+               <td>{{ student.phone }}</td>
+            </tr>
+            <tr class="h4">
+               <th>Student Email</th>
+               <td>${{ stutdent.email }} </td>
+            </tr>
+             </td>
+            </tr>
+            <tr class="h4">
+               <th>Class(s)</th>
+               <td>
+               {% if student.classes == null %}
+                  <i>Undefined</i>
+               {% else %}
+                  {% for classes in student.classes %}
+                    <a class="text-decoration-none" href="{{ path('classes_detail', {'id' : classes.id })}}">
+                     {{ classes.name }} 
+                    </a>
+                     <br>
+                  {% endfor %}
+               {% endif %}
+               </td>
+            </tr>
+         </table>
+      </div>
+   </div>
+</div>
+{% endblock %}
